@@ -193,36 +193,36 @@ export default class Schema extends Builder {
     }
   }
 
-  additionalProperties() {
-    if (arguments.length) {
-      this.addKeyword(new AdditionalProperties(...arguments));
+  additionalProperties(...args: any[]) {
+    if (args.length) {
+      this.addKeyword(new AdditionalProperties(...args));
       return this;
     }
 
     return this.getKeywordValue(AdditionalProperties);
   }
 
-  allOf() {
+  allOf(...args: any[]) {
     if (arguments.length) {
-      this.addKeyword(new AllOf(...arguments));
+      this.addKeyword(new AllOf(...args));
       return this;
     }
 
     return this.getKeywordValue(AllOf);
   }
 
-  anyOf() {
+  anyOf(...args: any[]) {
     if (arguments.length) {
-      this.addKeyword(new AnyOf(...arguments));
+      this.addKeyword(new AnyOf(...args));
       return this;
     }
 
     return this.getKeywordValue(AnyOf);
   }
 
-  oneOf() {
+  oneOf(...args: any[]) {
     if (arguments.length) {
-      this.addKeyword(new OneOf(...arguments));
+      this.addKeyword(new OneOf(...args));
       return this;
     }
 

@@ -6,7 +6,7 @@ export default class MultipleOf extends NumberKeyword {
 
   constructor(value) {
     super();
-    value = value.length === 1 ? value[0] : value;
+    //value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 
