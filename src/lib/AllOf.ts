@@ -2,9 +2,11 @@ import Keyword from './Keyword';
 import Schema from './Schema';
 
 export default class AllOf extends Keyword {
-  constructor(value) {
+  _value: any;
+  constructor(...value: any[]) {
     super();
-    this.value = arguments.length > 1 ? Array.prototype.slice.call(arguments) : value;
+    //this.value = arguments.length > 1 ? Array.prototype.slice.call(arguments) : value;
+    this.value = Array.isArray(value) && value.length === 1 ? value[0] : value;
   }
 
   get value() {

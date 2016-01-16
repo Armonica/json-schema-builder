@@ -1,11 +1,17 @@
 import ObjectKeyword from './ObjectKeyword';
 import Builder from './Builder';
 import Schema from './Schema';
-import { uniq } from 'lodash';
+//import { uniq } from 'lodash';
+declare function require(name:string);
+var _ = require('lodash');
 
 export default class Dependencies extends ObjectKeyword {
-  constructor(value) {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 
@@ -24,7 +30,7 @@ export default class Dependencies extends ObjectKeyword {
             throw new Error('array must have at least one item');
           }
 
-          if (uniq(prop).length != prop.length) {
+          if (_.uniq(prop).length != prop.length) {
             throw new Error('array items must be unique');
           }
 

@@ -1,9 +1,11 @@
-import ArrayKeyword from './ArrayKeyword';
 import Schema from './Schema';
+import ObjectKeyword from './ObjectKeyword';
 
-export default class AdditionalItems extends ArrayKeyword {
-  constructor(value) {
+export default class AdditionalProperties extends ObjectKeyword {
+  _value: any;
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 
@@ -26,8 +28,9 @@ export default class AdditionalItems extends ArrayKeyword {
         ? this.value.json({})
         : this.value;
 
-    context.additionalItems = value;
+    context.additionalProperties = value;
 
     return context;
   }
 }
+

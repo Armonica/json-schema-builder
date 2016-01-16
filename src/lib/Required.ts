@@ -1,13 +1,19 @@
 import ObjectKeyword from './ObjectKeyword';
 
 export default class Required extends ObjectKeyword {
-  constructor(value) {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
+    value = Array.isArray(value) && value.length === 1 && Array.isArray(value[0]) ? value[0] : value;
 
     if (!Array.isArray(value)) {
-      value = Array.prototype.slice.call(arguments);
+      value = Array.prototype.slice.call(value);
     }
+
     this.value = value;
+    //this.value = Array.isArray(value) && value.length === 1 ? value[0] : value;
   }
 
   get value() {
@@ -15,10 +21,12 @@ export default class Required extends ObjectKeyword {
   }
 
   set value(value) {
+
+
     if (Array.isArray(value) && value.length) {
       this._value = value;
     } else {
-      throw new Error('value must be an array of property names with at least one element');
+      throw new Error('value must be an array of property names with at least one element: ' + JSON.stringify(value));
     }
   }
 

@@ -94,7 +94,7 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
               foo: json.enum('foo'),
               bar: json.enum('bar')
             });
-
+        //console.log(JSON.stringify(schema.json()));
         return schema;
       });
 
@@ -104,7 +104,7 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
             .object()
             .property('foo', json.enum('foo'))
             .property('bar', json.enum('bar'), true);
-
+        //console.log(schema.json());
         return schema;
       });
 
@@ -114,9 +114,10 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
             .object()
             .property({ foo: json.enum('foo') })
             .property({ bar: json.enum('bar') }, true);
-
+        //console.log(schema.json());
         return schema;
       });
+
     });
 
     describe('type', () => {
@@ -672,10 +673,10 @@ describe('Tests', () => {
     del.sync(dir, { force: true });
   }
 
-  function test(schema, sample) {
-    schema.save(actualDir, sample);
-    assertMatch(sample);
-  }
+  //function test(schema, sample) {
+  //  schema.save(actualDir, sample);
+  //  assertMatch(sample);
+  //}
 
   before(() => {
 
@@ -687,7 +688,7 @@ describe('Tests', () => {
   after(() => {
     //rmdir(actualDir);
   });
-
+/*
   describe ('save tests', () => {
 
     it('should write sample schema async', done => {
@@ -709,7 +710,7 @@ describe('Tests', () => {
     });
 
   });
-
+*/
   describe ('Simple tests', () => {
 
     it('should match empty schema', () => {
@@ -744,11 +745,13 @@ describe('Tests', () => {
 
     it('should match schema with single required property', () => {
       const schema = json.property('foo', {}, true);
+
       test(schema, 'single-required-property.json');
     });
 
     it('should also match schema with single required property', () => {
       const schema = json.property('foo').required(true);
+      //console.log(JSON.stringify(schema));
       test(schema, 'single-required-property.json');
     });
 

@@ -1,5 +1,8 @@
 import Keyword from './Keyword';
-import * as _ from 'lodash';
+//import * as _ from 'lodash';
+
+declare function require(name:string);
+var _ = require('lodash');
 
 const primitiveTypes = [
   'array',
@@ -12,9 +15,13 @@ const primitiveTypes = [
 ];
 
 export default class Type extends Keyword {
-  constructor(value) {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
-    this.value = arguments.length > 1 ? Array.prototype.slice.call(arguments) : value;
+    value = value.length === 1 ? value[0] : value;
+    this.value = value;//value.length > 1 ? Array.prototype.slice.call(value) : value;
   }
 
   set value(value) {

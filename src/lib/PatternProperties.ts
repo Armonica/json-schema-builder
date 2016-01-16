@@ -3,8 +3,10 @@ import Schema from './Schema';
 import ObjectKeyword from './ObjectKeyword';
 
 export default class PatternProperties extends ObjectKeyword {
-  constructor(value) {
+  _value: any;
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 

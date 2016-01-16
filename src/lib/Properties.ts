@@ -4,8 +4,14 @@ import ObjectKeyword from './ObjectKeyword';
 
 
 export default class Properties extends ObjectKeyword {
-  constructor(value) {
+  _value: any;
+  constructor(...value: any[]) {
     super();
+    //console.log(JSON.stringify(value));
+    value = Array.isArray(value) && value.length === 1 ? value[0] : value;
+
+
+
     this.value = value;
   }
 
@@ -14,6 +20,10 @@ export default class Properties extends ObjectKeyword {
   }
 
   set value(value) {
+    //if (!Array.isArray(value)) {
+    //  value = Array.prototype.slice.call(value);
+    //}
+
     if (typeof value == 'object') {
       this._value = value;
     } else {

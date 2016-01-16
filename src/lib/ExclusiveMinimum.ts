@@ -1,8 +1,12 @@
 import NumberKeyword from './NumberKeyword';
 
-export default class ExclusiveMaximum extends NumberKeyword {
-  constructor(value) {
+export default class ExclusiveMinimum extends NumberKeyword {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 
@@ -21,11 +25,11 @@ export default class ExclusiveMaximum extends NumberKeyword {
   json(context) {
     context = context || {};
 
-    if (!context.hasOwnProperty('maximum')) {
-      throw new Error("maximum must be present with exclusiveMaximum");
+    if (!context.hasOwnProperty('minimum')) {
+      throw new Error('minimum must be present with exclusiveMinimum');
     }
 
-    context.exclusiveMaximum = this.value;
+    context.exclusiveMinimum = this.value;
     return context;
   }
 }

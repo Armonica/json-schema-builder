@@ -2,8 +2,12 @@ import Keyword from './Keyword';
 import Schema from './Schema';
 
 export default class Definitions extends Keyword {
-  constructor(value) {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 
@@ -27,7 +31,7 @@ export default class Definitions extends Keyword {
   json(context) {
     context = context || {};
 
-    context.definitions = value;
+    context.definitions = this.value;
     return context;
   }
 }

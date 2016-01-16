@@ -1,8 +1,12 @@
 import Keyword from './Keyword';
 
 export default class RefKeyword extends Keyword {
-  constructor(value) {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 

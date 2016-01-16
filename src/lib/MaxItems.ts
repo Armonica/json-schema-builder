@@ -1,8 +1,12 @@
 import ArrayKeyword from './ArrayKeyword';
 
-export default class MinItems extends ArrayKeyword {
-  constructor(value) {
+export default class MaxItems extends ArrayKeyword {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 
@@ -21,7 +25,7 @@ export default class MinItems extends ArrayKeyword {
   json(context) {
     context = context || {};
 
-    context.minItems = this.value;
+    context.maxItems = this.value;
     return context;
   }
 }

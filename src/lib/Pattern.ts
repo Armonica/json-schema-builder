@@ -1,8 +1,12 @@
 import StringKeyword from './StringKeyword';
 
 export default class Pattern extends StringKeyword {
-  constructor(value) {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 

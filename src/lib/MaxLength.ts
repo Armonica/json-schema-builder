@@ -1,8 +1,12 @@
-import ArrayKeyword from './ArrayKeyword';
+import StringKeyword from './StringKeyword';
 
-export default class MaxItems extends ArrayKeyword {
-  constructor(value) {
+export default class MaxLength extends StringKeyword {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 
@@ -21,7 +25,7 @@ export default class MaxItems extends ArrayKeyword {
   json(context) {
     context = context || {};
 
-    context.maxItems = this.value;
+    context.maxLength = this.value;
     return context;
   }
 }

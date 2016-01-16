@@ -1,10 +1,15 @@
+import ArrayKeyword from './ArrayKeyword';
 import Schema from './Schema';
-import ObjectKeyword from './ObjectKeyword';
 
-export default class AdditionalProperties extends ObjectKeyword {
-  constructor(value) {
+export default class AdditionalItems extends ArrayKeyword {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
-    this.value = value;
+    //value = value.length === 1 ? value[0] : value;
+    //this.value = value;
+    this.value = Array.isArray(value) && value.length === 1 ? value[0] : value;
   }
 
   get value() {
@@ -26,9 +31,8 @@ export default class AdditionalProperties extends ObjectKeyword {
         ? this.value.json({})
         : this.value;
 
-    context.additionalProperties = value;
+    context.additionalItems = value;
 
     return context;
   }
 }
-

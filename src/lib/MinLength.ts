@@ -1,9 +1,12 @@
 import StringKeyword from './StringKeyword';
 
 export default class MinLength extends StringKeyword {
-  constructor(value) {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
-    this.value = value;
+    this.value = value.length === 1 ? value[0] : value;
   }
 
   get value() {

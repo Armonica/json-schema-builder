@@ -1,5 +1,8 @@
 import StringKeyword from './StringKeyword';
-import { includes } from 'lodash';
+//import { includes } from '../../node_modules/lodash';
+
+declare function require(name:string);
+var _ = require('lodash');
 
 let validFormats = [
 	'date-time',
@@ -11,8 +14,12 @@ let validFormats = [
 ];
 
 export default class Format extends StringKeyword {
-	constructor(value) {
+
+	_value: any;
+
+	constructor(...value: any[]) {
 		super();
+    value = value.length === 1 ? value[0] : value;
 		this.value = value;
 	}
 
@@ -25,7 +32,7 @@ export default class Format extends StringKeyword {
 			throw new Error('value must be a string');
 		}
 
-		if (!includes(validFormats, value)) {
+		if (!_.includes(validFormats, value)) {
 			throw new Error('value must be a valid format');
 		}
 

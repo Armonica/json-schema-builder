@@ -2,8 +2,10 @@ import Keyword from './Keyword';
 import Schema from './Schema';
 
 export default class Not extends Keyword {
-  constructor(value) {
+  _value: any;
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 

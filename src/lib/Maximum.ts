@@ -1,8 +1,12 @@
 import NumberKeyword from './NumberKeyword';
 
-export default class Minimum extends NumberKeyword {
-  constructor(value) {
+export default class Maximum extends NumberKeyword {
+
+  _value: any;
+
+  constructor(...value: any[]) {
     super();
+    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 
@@ -21,7 +25,7 @@ export default class Minimum extends NumberKeyword {
   json(context) {
     context = context || {};
 
-    context.minimum = this.value;
+    context.maximum = this.value;
     return context;
   }
 }
