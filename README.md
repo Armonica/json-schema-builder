@@ -1,3 +1,5 @@
+#Warning!!: Not tested. Removed save function. Many incompats to arive.
+
 json-schema-builder
 ===================
 
