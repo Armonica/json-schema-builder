@@ -35,6 +35,7 @@ import PatternProperties from './PatternProperties';
 import Properties from './Properties';
 import RefKeyword from './RefKeyword';
 import Required from './Required';
+import Title from './Title';
 import Type from './Type';
 import UniqueItems from './UniqueItems';
 
@@ -398,6 +399,15 @@ export default class Schema extends Builder {
     }
 
     return this.getKeywordValue(RefKeyword);
+  }
+
+  title(val) {
+    if (arguments.length) {
+      this.addKeyword(new Title(val));
+      return this;
+    }
+
+    return this.getKeywordValue(Title);
   }
 
   json(context) {

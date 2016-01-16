@@ -55,4 +55,5 @@ export default class Builder {
   static minLength() { return Builder._schema().minLength(...arguments); }
   static pattern() { return Builder._schema().pattern(...arguments); }
   static format() { return Builder._schema().format(...arguments); }
+  static title(val: String) { return Builder._schema().title(val); }
 }

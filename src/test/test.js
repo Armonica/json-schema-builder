@@ -296,6 +296,14 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
         return schema;
       });
 
+      it("title does something", () => {
+        const schema = json.title('bardia');
+        //console.log('---------------------------------------');
+        print('------------------------------');
+        //console.log(JSON.stringify(schema, null, 4));
+        return schema;
+      });
+
       test('dependencies', 'multiple dependencies subschema', ()=> {
         const schema = json.dependencies({
           bar: json.properties({
