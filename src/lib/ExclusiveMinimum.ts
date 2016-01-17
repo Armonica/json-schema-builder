@@ -12,5 +12,6 @@ export default class ExclusiveMinimum extends BooleanKeyword {
     if (!context.hasOwnProperty('minimum')) {
       throw new Error("maximum must be present with exclusiveMinimum");
     }
+    return this._getValue();
   }
 }

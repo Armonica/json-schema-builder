@@ -1,4 +1,4 @@
-import Builder from './Builder';
+import Builder from './Base/Builder';
 import Schema from './Schema';
 import ObjectKeyword from './ObjectKeyword';
 

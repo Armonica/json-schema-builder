@@ -1,5 +1,5 @@
 import ObjectKeyword from './ObjectKeyword';
-import Builder from './Builder';
+import Builder from './Base/Builder';
 import Schema from './Schema';
 //import { uniq } from 'lodash';
 declare function require(name:string);

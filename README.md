@@ -1,4 +1,4 @@
-#Warning!!: Not tested. Removed save function. Many incompats to arive.
+#Warning!!: Not tested. Removed "save" function. Many incompats to arrive. To be moved to an indep repo.
 
 json-schema-builder
 ===================

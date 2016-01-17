@@ -1,4 +1,4 @@
-import Keyword from './Keyword';
+import Keyword from './Base/Keyword';
 import Schema from './Schema';
 
 export default class Default extends Keyword {

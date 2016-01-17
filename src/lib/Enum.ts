@@ -1,14 +1,11 @@
-import Keyword from './Keyword';
+import Keyword from './Base/Keyword';
 
 export default class Enum extends Keyword {
-
-  _value: any;
+  _key = "enum";
 
   constructor(...value: any[]) {
     super();
-
     value = Array.isArray(value) && value.length === 1 && Array.isArray(value[0]) ? value[0] : value;
-    //console.log(JSON.stringify(value));
     this.value = value;
   }
 
@@ -17,7 +14,6 @@ export default class Enum extends Keyword {
   }
 
   set value(value: any[]) {
-    //console.log(JSON.stringify(value));
     if (!Array.isArray(value)) {
       value = Array.prototype.slice.call(value);
     }
@@ -29,11 +25,4 @@ export default class Enum extends Keyword {
       throw new Error('value must be an array with at least one element: ...' + JSON.stringify(value));
     }
   }
-
-  json(context) {
-    context = context || {};
-    context.enum = this.value;
-    return context;
-  }
 }
-

@@ -12,5 +12,6 @@ export default class ExclusiveMaximum extends BooleanKeyword {
     if (!context.hasOwnProperty('maximum')) {
       throw new Error("maximum must be present with exclusiveMaximum");
     }
+    return this._getValue();
   }
 }

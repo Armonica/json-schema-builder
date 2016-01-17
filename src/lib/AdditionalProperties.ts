@@ -2,7 +2,8 @@ import Schema from './Schema';
 import ObjectKeyword from './ObjectKeyword';
 
 export default class AdditionalProperties extends ObjectKeyword {
-  _value: any;
+  _key = "additionalProperties";
+
   constructor(...value: any[]) {
     super();
     value = value.length === 1 ? value[0] : value;
@@ -21,16 +22,10 @@ export default class AdditionalProperties extends ObjectKeyword {
     }
   }
 
-  json(context) {
-    context = context || {};
-
-    const value = (this.value instanceof Schema)
-        ? this.value.json({})
-        : this.value;
-
-    context.additionalProperties = value;
-
-    return context;
+  _jsonConstraints(context) {
+    return (this.value instanceof Schema)
+      ? this.value.json({})
+      : this.value;
   }
 }
 

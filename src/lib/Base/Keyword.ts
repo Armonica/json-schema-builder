@@ -1,4 +1,4 @@
-import Builder from '../Builder';
+import Builder from './Builder';
 
 export default class Keyword extends Builder {
   _key: string;
@@ -12,12 +12,13 @@ export default class Keyword extends Builder {
     this._value = value;
   }
 
-  protected _jsonConstraints(context) {}
+  protected _jsonConstraints(context) {
+    return this._getValue();
+  }
 
   json(context) {
     context = context || {};
-    this._jsonConstraints(context);
-    context[this._key] = this._getValue();
+    context[this._key] = this._jsonConstraints(context);
     return context;
   }
 }

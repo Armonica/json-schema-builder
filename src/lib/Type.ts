@@ -1,4 +1,4 @@
-import Keyword from './Keyword';
+import Keyword from './Base/Keyword';
 //import * as _ from 'lodash';
 
 declare function require(name:string);
@@ -15,8 +15,7 @@ const primitiveTypes = [
 ];
 
 export default class Type extends Keyword {
-
-  _value: any;
+  _key = "type";
 
   constructor(...value: any[]) {
     super();
@@ -44,9 +43,4 @@ export default class Type extends Keyword {
     return this._value;
   }
 
-  json(context) {
-    context = context || {};
-    context.type = this.value;
-    return context;
-  }
 }

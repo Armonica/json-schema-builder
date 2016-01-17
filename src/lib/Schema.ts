@@ -6,7 +6,7 @@ import AdditionalItems from './AdditionalItems';
 import AdditionalProperties from './AdditionalProperties';
 import AllOf from './AllOf';
 import AnyOf from './AnyOf';
-import Builder from './Builder';
+import Builder from './Base/Builder';
 import Default from './Default';
 import Definitions from './Definitions';
 import Dependencies from './Dependencies';
@@ -30,7 +30,7 @@ import OneOf from './OneOf';
 import Pattern from './Pattern';
 import PatternProperties from './PatternProperties';
 import Properties from './Properties';
-import RefKeyword from './RefKeyword';
+import Ref from './Ref';
 import Required from './Required';
 import Title from './Title';
 import Type from './Type';
@@ -91,10 +91,13 @@ export default class Schema extends Builder {
 
   null() { return this.type('null'); }
 
+
+
   //required(...args: any[]) {
-  required(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new Required(...args));
+  required(val?:String|Array<String>) {
+    if (val && val.length) {
+      let value = Array.isArray(val) ? val : [val];
+      this.addKeyword(new Required(value));
       return this;
     }
 
@@ -393,11 +396,11 @@ export default class Schema extends Builder {
 
   $ref(val: String) {
     if (val) {
-      this.addKeyword(new RefKeyword(val));
+      this.addKeyword(new Ref(val));
       return this;
     }
 
-    return this.getKeywordValue(RefKeyword);
+    return this.getKeywordValue(Ref);
   }
 
   title(val) {

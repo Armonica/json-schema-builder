@@ -2,7 +2,7 @@ import Schema from './Schema';
 
 export default class Builder {
 
-  private static _schema() { return new Schema(); }
+  protected static _schema() { return new Schema(); }
 
   static schema() { return Builder._schema(); }
 
@@ -42,7 +42,8 @@ export default class Builder {
   static minProperties(val: Number) { return Builder._schema().minProperties(val); }
   static patternProperties() { return Builder._schema().patternProperties(...arguments); }
   static properties() { return Builder._schema().properties(...arguments); }
-  static required() { return Builder._schema().required(...arguments); }
+  //static required() { return Builder._schema().required(...arguments); }
+  static required(val:String|Array<String>) { return Builder._schema().required(val); }
   static $ref(val: String) { return Builder._schema().$ref(val); }
 
   //TODO: function that in original has no implementation. To be done.

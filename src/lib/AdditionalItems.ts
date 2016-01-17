@@ -2,13 +2,9 @@ import ArrayKeyword from './ArrayKeyword';
 import Schema from './Schema';
 
 export default class AdditionalItems extends ArrayKeyword {
-
-  _value: any;
-
+  _key = "additionalItems";
   constructor(...value: any[]) {
     super();
-    //value = value.length === 1 ? value[0] : value;
-    //this.value = value;
     this.value = Array.isArray(value) && value.length === 1 ? value[0] : value;
   }
 
@@ -24,15 +20,9 @@ export default class AdditionalItems extends ArrayKeyword {
     }
   }
 
-  json(context) {
-    context = context || {};
-
-    const value = (this.value instanceof Schema)
-        ? this.value.json({})
-        : this.value;
-
-    context.additionalItems = value;
-
-    return context;
+  _jsonConstraints(context) {
+    return (this.value instanceof Schema)
+      ? this.value.json({})
+      : this.value;
   }
 }

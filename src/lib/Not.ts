@@ -1,8 +1,8 @@
-import Keyword from './Keyword';
+import Keyword from './Base/Keyword';
 import Schema from './Schema';
 
 export default class Not extends Keyword {
-  _value: any;
+  _key = "not";
   constructor(...value: any[]) {
     super();
     value = value.length === 1 ? value[0] : value;
@@ -21,14 +21,9 @@ export default class Not extends Keyword {
     this._value = value;
   }
 
-  json(context) {
-    context = context || {};
-
-    const value = (this.value instanceof Schema)
-        ? this.value.json({})
-        : this.value;
-
-    context.not = value;
-    return context;
+  _jsonConstraints(context) {
+    return (this.value instanceof Schema)
+      ? this.value.json({})
+      : this.value;
   }
 }

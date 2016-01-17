@@ -1,9 +1,9 @@
-import Keyword from './Keyword';
+import Keyword from './Base/Keyword';
 import Schema from './Schema';
 
 export default class Definitions extends Keyword {
 
-  _value: any;
+  _key = "definitions";
 
   constructor(...value: any[]) {
     super();
@@ -28,10 +28,4 @@ export default class Definitions extends Keyword {
     }
   }
 
-  json(context) {
-    context = context || {};
-
-    context.definitions = this.value;
-    return context;
-  }
 }

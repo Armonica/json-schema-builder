@@ -1,11 +1,10 @@
-import Keyword from './Keyword';
+import Keyword from './Base/Keyword';
 import Schema from './Schema';
 
 export default class AnyOf extends Keyword {
-  _value: any;
+  _key = 'anyOf';
   constructor(...value: any[]) {
     super();
-    //this.value = arguments.length > 1 ? Array.prototype.slice.call(arguments) : value;
     this.value = Array.isArray(value) && value.length === 1 ? value[0] : value;
   }
 
@@ -27,18 +26,13 @@ export default class AnyOf extends Keyword {
     this._value = value;
   }
 
-  json(context) {
-    context = context || {};
-    if (this.value) {
-      const props = [];
+  _jsonConstraints(context) {
+    const props = [];
 
-      this.value.forEach(elem => {
-        props.push(elem instanceof Schema ? elem.json() : elem)
-      });
+    this.value.forEach(elem => {
+      props.push(elem instanceof Schema ? elem.json() : elem);
+    });
 
-      context.anyOf = props;
-    }
-
-    return context;
+    return props;
   }
 }
