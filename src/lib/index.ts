@@ -6,12 +6,12 @@ export default class Builder {
 
   static schema() { return Builder._schema(); }
 
-  static allOf(...args: any[]) { return Builder._schema().allOf(...args); }
-  static anyOf(...args: any[]) { return Builder._schema().anyOf(...args); }
+  static allOf(val: Array<Schema>) { return Builder._schema().allOf(val); }
+  static anyOf(val: Array<Schema>) { return Builder._schema().anyOf(val); }
   static default(...args: any[]) { return Builder._schema().default(...args); }
   static enum() { return Builder._schema().enum(...arguments); }
   static not() { return Builder._schema().not(...arguments); }
-  static oneOf() { return Builder._schema().oneOf(...arguments); }
+  static oneOf(val: Array<Schema>) { return Builder._schema().oneOf(val); }
   static type() { return Builder._schema().type(...arguments); }
   // generic helpers - type wrappers
   static array() { return Builder._schema().array(); }

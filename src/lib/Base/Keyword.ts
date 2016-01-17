@@ -16,7 +16,7 @@ export default class Keyword extends Builder {
     return this._getValue();
   }
 
-  json(context) {
+  json(context?) {
     context = context || {};
     context[this._key] = this._jsonConstraints(context);
     return context;

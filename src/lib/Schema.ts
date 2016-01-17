@@ -4,8 +4,8 @@ var _ = require('lodash');
 
 import AdditionalItems from './AdditionalItems';
 import AdditionalProperties from './AdditionalProperties';
-import AllOf from './AllOf';
-import AnyOf from './AnyOf';
+import AllOf from './Keywords/AllOf';
+import AnyOf from './Keywords/AnyOf';
 import Builder from './Base/Builder';
 import Default from './Default';
 import Definitions from './Definitions';
@@ -26,7 +26,7 @@ import MinLength from './Keywords/MinLength';
 import MinProperties from './Keywords/MinProperties';
 import MultipleOf from './Keywords/MultipleOf';
 import Not from './Not';
-import OneOf from './OneOf';
+import OneOf from './Keywords/OneOf';
 import Pattern from './Keywords/Pattern';
 import PatternProperties from './PatternProperties';
 import Properties from './Properties';
@@ -204,27 +204,28 @@ export default class Schema extends Builder {
     return this.getKeywordValue(AdditionalProperties);
   }
 
-  allOf(...args: any[]) {
-    if (arguments.length) {
-      this.addKeyword(new AllOf(...args));
+  //TODO: to check the number of arguments
+  allOf(val: Array<Schema>) {
+    if (val.length) {
+      this.addKeyword(new AllOf(val));
       return this;
     }
 
     return this.getKeywordValue(AllOf);
   }
 
-  anyOf(...args: any[]) {
-    if (arguments.length) {
-      this.addKeyword(new AnyOf(...args));
+  anyOf(val: Array<Schema>) {
+    if (val.length) {
+      this.addKeyword(new AnyOf(val));
       return this;
     }
 
     return this.getKeywordValue(AnyOf);
   }
 
-  oneOf(...args: any[]) {
-    if (arguments.length) {
-      this.addKeyword(new OneOf(...args));
+  oneOf(val: Array<Schema>) {
+    if (val.length) {
+      this.addKeyword(new OneOf(val));
       return this;
     }
 

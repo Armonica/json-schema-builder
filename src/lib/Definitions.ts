@@ -7,6 +7,9 @@ export default class Definitions extends Keyword {
 
   constructor(...value: any[]) {
     super();
+
+    //console.log('aaa');
+
     value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
