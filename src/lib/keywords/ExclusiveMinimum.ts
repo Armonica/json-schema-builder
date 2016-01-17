@@ -1,4 +1,4 @@
-import BooleanKeyword from './Base/BooleanKeyword';
+import BooleanKeyword from '../Base/BooleanKeyword';
 
 export default class ExclusiveMinimum extends BooleanKeyword {
 

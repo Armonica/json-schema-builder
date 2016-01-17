@@ -1,7 +1,7 @@
-import PositiveIntegerDefault0Keyword from './Base/PositiveIntegerDefault0Keyword';
+import PositiveIntegerDefault0Keyword from '../Base/PositiveIntegerDefault0Keyword';
 
 export default class MinItems extends PositiveIntegerDefault0Keyword {
-  _key = "minItems";
+  _key = "minProperties";
   constructor(value: Number) {
     super(value);
   }

@@ -1,4 +1,4 @@
-import StringKeyword from './Base/StringKeyword';
+import StringKeyword from '../Base/StringKeyword';
 
 let validFormats = [
 	'date-time',

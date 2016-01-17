@@ -1,7 +1,7 @@
 /**
  * Created by Paul on 1/16/2016.
  */
-import StringKeyword from './Base/StringKeyword';
+import StringKeyword from '../Base/StringKeyword';
 
 export default class Title extends StringKeyword {
   _key = '$ref';

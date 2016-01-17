@@ -1,4 +1,4 @@
-import StringKeyword from './Base/StringKeyword';
+import StringKeyword from '../Base/StringKeyword';
 
 export default class RefKeyword extends StringKeyword {
   _key = '$ref';

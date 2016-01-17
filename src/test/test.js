@@ -507,7 +507,6 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
       });
 
     });
-
   });
 
   describe('array keywords', () => {
