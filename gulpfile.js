@@ -29,7 +29,7 @@ var babelOptions = {
 var paths = {
   sourceRoot: path.join(__dirname, 'src'),
   src: ['src/**/*.js', 'src/**/*.ts'],
-  watch: ['src/**/*.js', 'src/**/*.json'],
+  watch: ['src/**/*.js', 'src/**/*.ts', 'src/**/*.json'],
   dist: 'dist',
   test: 'dist/test/test.js'
 }

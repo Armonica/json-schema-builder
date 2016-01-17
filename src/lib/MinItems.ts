@@ -1,31 +1,8 @@
-import ArrayKeyword from './ArrayKeyword';
+import PositiveIntegerDefault0Keyword from './Base/PositiveIntegerDefault0Keyword';
 
-export default class MinItems extends ArrayKeyword {
-
-  _value: any;
-
-  constructor(...value: any[]) {
-    super();
-    value = value.length === 1 ? value[0] : value;
-    this.value = value;
-  }
-
-  get value() {
-    return this._value;
-  }
-
-  set value(value) {
-    if (value >= 0 && Number.isInteger(value)) {
-      this._value = value;
-    } else {
-      throw new Error('value must be an integer and greater than or equal to 0');
-    }
-  }
-
-  json(context) {
-    context = context || {};
-
-    context.minItems = this.value;
-    return context;
+export default class MinItems extends PositiveIntegerDefault0Keyword {
+  _key = "minItems";
+  constructor(value: Number) {
+    super(value);
   }
 }

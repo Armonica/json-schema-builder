@@ -1,35 +1,16 @@
-import NumberKeyword from './NumberKeyword';
+import BooleanKeyword from './Base/BooleanKeyword';
 
-export default class ExclusiveMinimum extends NumberKeyword {
+export default class ExclusiveMinimum extends BooleanKeyword {
 
-  _value: any;
+  _key = "exclusiveMinimum";
 
-  constructor(...value: any[]) {
-    super();
-    value = value.length === 1 ? value[0] : value;
-    this.value = value;
+  constructor(value: Boolean) {
+    super(value);
   }
 
-  get value() {
-    return this._value;
-  }
-
-  set value(value) {
-    if (typeof value == 'boolean') {
-      this._value = value;
-    } else {
-      throw new Error('value must be a boolean value');
-    }
-  }
-
-  json(context) {
-    context = context || {};
-
+  protected _jsonConstraints(context) {
     if (!context.hasOwnProperty('minimum')) {
-      throw new Error('minimum must be present with exclusiveMinimum');
+      throw new Error("maximum must be present with exclusiveMinimum");
     }
-
-    context.exclusiveMinimum = this.value;
-    return context;
   }
 }

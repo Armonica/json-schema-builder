@@ -22,28 +22,28 @@ export default class Builder {
   static object() { return Builder._schema().object(); }
   static string() { return Builder._schema().string(); }
   // numeric helpers
-  static exclusiveMaximum() { return Builder._schema().exclusiveMaximum(...arguments); }
-  static exclusiveMinimum() { return Builder._schema().exclusiveMinimum(...arguments); }
-  static maximum() { return Builder._schema().maximum(...arguments); }
-  static minimum() { return Builder._schema().minimum(...arguments); }
+  static exclusiveMaximum(val: Boolean) { return Builder._schema().exclusiveMaximum(val); }
+  static exclusiveMinimum(val: Boolean) { return Builder._schema().exclusiveMinimum(val); }
+  static maximum(val: Number) { return Builder._schema().maximum(val); }
+  static minimum(val: Number) { return Builder._schema().minimum(val); }
   static multipleOf(val: Number) { return Builder._schema().multipleOf(val); }
   // array helpers
   static additionalItems() { return Builder._schema().additionalItems(...arguments); }
   static items() { return Builder._schema().items(...arguments); }
-  static maxItems() { return Builder._schema().maxItems(...arguments); }
-  static minItems() { return Builder._schema().minItems(...arguments); }
-  static uniqueItems() { return Builder._schema().uniqueItems(...arguments); }
+  static maxItems(val: Number) { return Builder._schema().maxItems(val); }
+  static minItems(val: Number) { return Builder._schema().minItems(val); }
+  static uniqueItems(val: Boolean) { return Builder._schema().uniqueItems(val); }
 
   // object helpers
   static additionalProperties(...args: any[]) { return Builder._schema().additionalProperties(...args); }
   static definitions() { return Builder._schema().definitions(...arguments); }
   static dependencies() { return Builder._schema().dependencies(...arguments); }
-  static maxProperties(...args: any[]) { return Builder._schema().maxProperties(...args); }
-  static minProperties() { return Builder._schema().minProperties(...arguments); }
+  static maxProperties(val: Number) { return Builder._schema().maxProperties(val); }
+  static minProperties(val: Number) { return Builder._schema().minProperties(val); }
   static patternProperties() { return Builder._schema().patternProperties(...arguments); }
   static properties() { return Builder._schema().properties(...arguments); }
   static required() { return Builder._schema().required(...arguments); }
-  static $ref() { return Builder._schema().$ref(...arguments); }
+  static $ref(val: String) { return Builder._schema().$ref(val); }
 
   //TODO: function that in original has no implementation. To be done.
   //additionalProperty() { return Builder._schema().additionalProperty(...arguments) }
@@ -51,9 +51,9 @@ export default class Builder {
   static property(name, value, required) { return Builder._schema().property(name, value, required); }
 
   // string helpers
-  static maxLength() { return Builder._schema().maxLength(...arguments); }
-  static minLength() { return Builder._schema().minLength(...arguments); }
-  static pattern() { return Builder._schema().pattern(...arguments); }
-  static format() { return Builder._schema().format(...arguments); }
+  static maxLength(val: Number) { return Builder._schema().maxLength(val); }
+  static minLength(val: Number) { return Builder._schema().minLength(val); }
+  static pattern(val: String) { return Builder._schema().pattern(val); }
+  static format(val: String) { return Builder._schema().format(val); }
   static title(val: String) { return Builder._schema().title(val); }
 }

@@ -3,11 +3,11 @@
 json-schema-builder
 ===================
 
-[![NPM](https://nodei.co/npm/json-schema-builder.png?compact=true)](https://nodei.co/npm/json-schema-builder/)
+<!--[![NPM](https://nodei.co/npm/json-schema-builder.png?compact=true)](https://nodei.co/npm/json-schema-builder/)-->
 
 Create syntactically correct [JSON Schema](http://json-schema.org/) with a fluent JavaScript API.
 
-    npm install --save json-schema-builder
+    <!--npm install --save json-schema-builder-->
     
 See the [wiki](https://github.com/atomiqio/json-schema-builder/wiki) and [tests](https://github.com/atomiqio/json-schema-builder/blob/master/src/test/test.js) for documentation and examples.
 
@@ -100,24 +100,10 @@ The following constraints can be applied to object types: `maxProperties`, `minP
 See [Validation for object types](https://github.com/atomiqio/json-schema-builder/wiki/Object).
 
 
-### Saving a schema to file
-
-There is a convenience `save` method for saving a schema to a file. It generates output as JSON Schema and saves it as a UTF-8, formatted JSON file with 2-space indentation.
-    
-
-    // save to a file synchronously
-    schema.save(path, to, filename);
-    
-    // save to a file asynchronously
-    schema.save(filename, function(err) {
-      ...
-    });
-
-Of course, the output from `schema.json()` can be explicitly persisted any way desired.
 
 Tests
 -----
 
     npm test
 
-`json-schema-builder` provides [tests](https://github.com/atomiqio/json-schema-builder/blob/master/src/test/test.js) to verify the API can generate all the schemas that comprise the standard [JSON Schema Test Suite](https://github.com/json-schema/JSON-Schema-Test-Suite).
+`json-schema-builder` provides [tests](https://github.com/armonica/json-schema-builder/blob/master/src/test/test.js) to verify the API can generate all the schemas that comprise the standard [JSON Schema Test Suite](https://github.com/json-schema/JSON-Schema-Test-Suite).

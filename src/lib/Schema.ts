@@ -2,9 +2,6 @@
 declare function require(name:string);
 var _ = require('lodash');
 
-//import { writeFile, writeFileSync } from 'fs';
-//import { join } from 'path';
-
 import AdditionalItems from './AdditionalItems';
 import AdditionalProperties from './AdditionalProperties';
 import AllOf from './AllOf';
@@ -18,7 +15,7 @@ import ExclusiveMaximum from './ExclusiveMaximum';
 import ExclusiveMinimum from './ExclusiveMinimum';
 import Format from './Format';
 import Items from './Items';
-import Keyword from './Keyword';
+
 import Maximum from './Maximum';
 import MaxItems from './MaxItems';
 import MaxLength from './MaxLength';
@@ -94,6 +91,7 @@ export default class Schema extends Builder {
 
   null() { return this.type('null'); }
 
+  //required(...args: any[]) {
   required(...args: any[]) {
     if (args.length) {
       this.addKeyword(new Required(...args));
@@ -239,36 +237,37 @@ export default class Schema extends Builder {
     return this.getKeywordValue(MultipleOf);
   }
 
-  maximum(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new Maximum(...args));
+  //maximum(...args: any[]) {
+  maximum(val: Number) {
+    if (val || val === 0) {
+      this.addKeyword(new Maximum(val));
       return this;
     }
 
     return this.getKeywordValue(Maximum);
   }
 
-  exclusiveMaximum(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new ExclusiveMaximum(...args));
+  exclusiveMaximum(val: Boolean) {
+    if (val === false || val === true) {
+      this.addKeyword(new ExclusiveMaximum(val));
       return this;
     }
 
     return this.getKeywordValue(ExclusiveMaximum);
   }
 
-  minimum(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new Minimum(...args));
+  minimum(val: Number) {
+    if (val || val === 0) {
+      this.addKeyword(new Minimum(val));
       return this;
     }
 
     return this.getKeywordValue(Minimum);
   }
 
-  exclusiveMinimum(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new ExclusiveMinimum(...args));
+  exclusiveMinimum(val: Boolean) {
+    if (val === false || val === true) {
+      this.addKeyword(new ExclusiveMinimum(val));
       return this;
     }
 
@@ -284,18 +283,18 @@ export default class Schema extends Builder {
     return this.getKeywordValue(Not);
   }
 
-  maxProperties(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new MaxProperties(...args));
+  maxProperties(val: Number) {
+    if (val || val === 0) {
+      this.addKeyword(new MaxProperties(val));
       return this;
     }
 
     return this.getKeywordValue(MaxProperties);
   }
 
-  minProperties(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new MinProperties(...args));
+  minProperties(val: Number) {
+    if (val || val === 0) {
+      this.addKeyword(new MinProperties(val));
       return this;
     }
 
@@ -320,54 +319,54 @@ export default class Schema extends Builder {
     return this.getKeywordValue(Items);
   }
 
-  maxItems(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new MaxItems(...args));
+  maxItems(val: Number) {
+    if (val || val === 0) {
+      this.addKeyword(new MaxItems(val));
       return this;
     }
 
     return this.getKeywordValue(MaxItems);
   }
 
-  minItems(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new MinItems(...args));
+  minItems(val: Number) {
+    if (val || val === 0) {
+      this.addKeyword(new MinItems(val));
       return this;
     }
 
     return this.getKeywordValue(MinItems);
   }
 
-  uniqueItems(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new UniqueItems(...args));
+  uniqueItems(val: Boolean) {
+    if (val === true || val === false) {
+      this.addKeyword(new UniqueItems(val));
       return this;
     }
 
     return this.getKeywordValue(UniqueItems);
   }
 
-  maxLength(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new MaxLength(...args));
+  maxLength(val: Number) {
+    if (val || val === 0) {
+      this.addKeyword(new MaxLength(val));
       return this;
     }
 
     return this.getKeywordValue(MaxLength);
   }
 
-  minLength(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new MinLength(...args));
+  minLength(val: Number) {
+    if (val || val === 0) {
+      this.addKeyword(new MinLength(val));
       return this;
     }
 
     return this.getKeywordValue(MinLength);
   }
 
-  pattern(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new Pattern(...args));
+  pattern(val: String) {
+    if (val) {
+      this.addKeyword(new Pattern(val));
       return this;
     }
 
@@ -392,9 +391,9 @@ export default class Schema extends Builder {
     return this.getKeywordValue(Dependencies);
   }
 
-  $ref(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new RefKeyword(...args));
+  $ref(val: String) {
+    if (val) {
+      this.addKeyword(new RefKeyword(val));
       return this;
     }
 
@@ -420,10 +419,10 @@ export default class Schema extends Builder {
     return context;
   }
 
-	format(...args: any[]) {
-		if (args.length) {
+	format(val: String) {
+		if (val) {
 			this.addKeyword(
-        new Format(...args)
+        new Format(val)
       );
 			return this;
 		}
@@ -440,21 +439,5 @@ export default class Schema extends Builder {
 		return this.getKeywordValue(Default);
 	}
 
-/*
-  save() {
-    const context = typeof arguments[0] == 'object' ? arguments[0] : null;
-    const callback = arguments.length && typeof arguments[arguments.length - 1] == 'function' ? arguments[arguments.length - 1] : null;
-
-    if (callback && arguments.length == 1 || !arguments.length) throw new Error('missing filename argument');
-
-    const begin = context ? 1 : 0;
-    const end = callback ? arguments.length - 1 : arguments.length;
-    const args = Array.prototype.slice.call(arguments, begin, end);
-    const pathname = join(...args);
-    const json = JSON.stringify(this.json(context), null, 2);
-
-    callback ? writeFile(pathname, json, 'utf8', callback) : writeFileSync(pathname, json, 'utf8');
-  }
-  */
 }
 

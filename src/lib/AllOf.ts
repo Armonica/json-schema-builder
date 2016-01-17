@@ -3,6 +3,7 @@ import Schema from './Schema';
 
 export default class AllOf extends Keyword {
   _value: any;
+  _key = 'allOf';
   constructor(...value: any[]) {
     super();
     //this.value = arguments.length > 1 ? Array.prototype.slice.call(arguments) : value;

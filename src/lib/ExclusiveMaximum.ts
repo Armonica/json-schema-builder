@@ -1,35 +1,16 @@
-import NumberKeyword from './NumberKeyword';
+import BooleanKeyword from './Base/BooleanKeyword';
 
-export default class ExclusiveMaximum extends NumberKeyword {
+export default class ExclusiveMaximum extends BooleanKeyword {
 
-  _value: any;
+  _key = "exclusiveMaximum";
 
-  constructor(...value: any[]) {
-    super();
-    value = value.length === 1 ? value[0] : value;
-    this.value = value;
+  constructor(value: Boolean) {
+    super(value);
   }
 
-  get value() {
-    return this._value;
-  }
-
-  set value(value) {
-    if (typeof value == 'boolean') {
-      this._value = value;
-    } else {
-      throw new Error('value must be a boolean value');
-    }
-  }
-
-  json(context) {
-    context = context || {};
-
+  protected _jsonConstraints(context) {
     if (!context.hasOwnProperty('maximum')) {
       throw new Error("maximum must be present with exclusiveMaximum");
     }
-
-    context.exclusiveMaximum = this.value;
-    return context;
   }
 }

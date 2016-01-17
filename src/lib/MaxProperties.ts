@@ -1,30 +1,8 @@
-import ObjectKeyword from './ObjectKeyword';
+import PositiveIntegerKeyword from './Base/PositiveIntegerKeyword';
 
-export default class MaxProperties extends ObjectKeyword {
-
-  _value: any;
-
-  constructor(...value: any[]) {
-    super();
-    value = value.length === 1 ? value[0] : value;
-    this.value = value || 0;
-  }
-
-  get value() {
-    return this._value;
-  }
-
-  set value(value) {
-    if (Number.isInteger(value) && value >= 0) {
-      this._value = value;
-    } else {
-      throw new Error('value must be an integer greater than or equal to 0')
-    }
-  }
-
-  json(context) {
-    context = context || {};
-    context.maxProperties = this.value;
-    return context;
+export default class MaxItems extends PositiveIntegerKeyword {
+  _key = 'maxProperties';
+  constructor(value: Number) {
+    super(value);
   }
 }
