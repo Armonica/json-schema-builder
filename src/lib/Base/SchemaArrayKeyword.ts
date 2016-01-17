@@ -20,7 +20,7 @@ export default class SchemaArrayKeyword extends Keyword {
     if (!value.length) {
       throw new Error('value must be an array of values with at least one element');
     }
-
+    //TODO: it is really needed?
     value.forEach(elem => {
       if (!(elem instanceof Schema)) {
         throw new Error('array value must be a valid Schema instance');

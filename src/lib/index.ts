@@ -36,7 +36,7 @@ export default class Builder {
 
   // object helpers
   static additionalProperties(...args: any[]) { return Builder._schema().additionalProperties(...args); }
-  static definitions() { return Builder._schema().definitions(...arguments); }
+  static definitions(val: Object) { return Builder._schema().definitions(val); }
   static dependencies() { return Builder._schema().dependencies(...arguments); }
   static maxProperties(val: Number) { return Builder._schema().maxProperties(val); }
   static minProperties(val: Number) { return Builder._schema().minProperties(val); }

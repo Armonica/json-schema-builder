@@ -447,13 +447,16 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
 
     describe('definitions', () => {
 
-      //TODO: make the test to run as it should, now fake
-      test('definitions', 'valid definition', () => {
-        const schema = json.definitions({'foo': json.$ref('http://json-schema.org/draft-04/schema#')});
-
-        console.log(schema.json());
-        return schema;
-      });
+      //TODO: make the test to run as it should, now fake,
+      //TODO: and looks fake into the tests node module, or I'm wrong
+      //TODO: removed until better tests will be done
+      //test('definitions', 'valid definition', () => {
+      //  const schema = json.definitions({
+      //    'foo': json.type('integer')
+      //  });
+      //
+      //  return schema;
+      //});
       //TODO: duplicate?
       //test('definitions', 'valid definition', () => {
       //  const schema = json.$ref('http://json-schema.org/draft-04/schema#');

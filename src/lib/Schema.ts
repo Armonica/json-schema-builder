@@ -377,9 +377,9 @@ export default class Schema extends Builder {
     return this.getKeywordValue(Pattern);
   }
 
-  definitions(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new Definitions(...args));
+  definitions(val: Object) {
+    if (val) {
+      this.addKeyword(new Definitions(val));
       return this;
     }
 

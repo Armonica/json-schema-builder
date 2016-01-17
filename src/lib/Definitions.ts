@@ -1,34 +1,39 @@
 import Keyword from './Base/Keyword';
 import Schema from './Schema';
-
+// TODO: try finding a better way than Object type
 export default class Definitions extends Keyword {
 
   _key = "definitions";
 
-  constructor(...value: any[]) {
+  constructor(value: Object) {
     super();
-
-    //console.log('aaa');
-
-    value = value.length === 1 ? value[0] : value;
     this.value = value;
   }
 
-  get value() {
+  get value(): Object {
     return this._value;
   }
 
-  set value(value) {
-    if (typeof value == 'object' && !Array.isArray(value)) {
-      for (let prop in value) {
-        if (!(prop instanceof Schema)) {
-          throw new Error('value properties must be valid Schema instances');
-        }
+
+  set value(value: Object) {
+    for (let key of Object.keys(value)) {
+      let prop = value[key];
+      if (!(prop instanceof Schema)) {
+        throw new Error('value properties must be valid Schema instances');
       }
-      this._value = value;
-    } else {
-      throw new Error('value must be an object');
     }
+    this._value = value;
+  }
+
+  _jsonConstraints(context) {
+    const props = {};
+
+    for (let key of Object.keys(this.value)) {
+      let elem = this.value[key];
+      props[key] = elem.json(null);
+    }
+
+    return props;
   }
 
 }
