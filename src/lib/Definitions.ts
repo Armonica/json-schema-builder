@@ -27,13 +27,10 @@ export default class Definitions extends Keyword {
 
   _jsonConstraints(context) {
     const props = {};
-
     for (let key of Object.keys(this.value)) {
       let elem = this.value[key];
       props[key] = elem.json(null);
     }
-
     return props;
   }
-
 }

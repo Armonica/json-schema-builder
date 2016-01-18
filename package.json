@@ -16,32 +16,28 @@
     "JSON",
     "schema"
   ],
-  "contributors": [
-    "Tony Pujals (http://twitter.com/subfuzion)",
-    "Peter Svetlichny (http://twitter.com/p_svetlichny)"
-  ],
+  "contributors": [],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/armonica/json-schema-builder/issues"
   },
   "homepage": "https://github.com/armonica/json-schema-builder#readme",
   "dependencies": {
-    "babel-runtime": "^5.4.7",
-    "gulp-filter": "^3.0.1",
-    "gulp-typescript": "^2.10.0",
     "lodash": "^3.10.0"
   },
   "devDependencies": {
-    "babel": "^5.4.7",
+    "babel-preset-es2015": "^6.3.13",
     "chalk": "^1.1.0",
-    "del": "^1.2.0",
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
-    "gulp-babel": "^5.1.0",
+    "gulp-babel": "^6.1.1",
     "gulp-concat": "^2.5.2",
     "gulp-ext-replace": "^0.2.0",
+    "gulp-filter": "^3.0.1",
     "gulp-mocha": "^2.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-typescript": "^2.10.0",
     "gulp-util": "^3.0.5",
     "json-schema-test-suite": "0.0.10",
     "merge2": "^0.3.6",

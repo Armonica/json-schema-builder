@@ -15,15 +15,21 @@ var merge = require('merge2');
 
 var babelOptions = {
   // http://babeljs.io/docs/usage/experimental/
-  stage: 1,
+  //stage: 1,
 
   // http://babeljs.io/docs/usage/runtime/
-  optional: ['runtime'],
+  //optional: ['runtime'],
 
   // http://babeljs.io/docs/advanced/transformers/#optional
 
   // whitelist: [],
-  blacklist: []
+  //blacklist: []
+
+  //plugins: ['transform-runtime'],
+  //presets: [
+  //  'es2015',
+  //  'stage-1'
+  //]
 };
 
 var paths = {
@@ -32,12 +38,12 @@ var paths = {
   watch: ['src/**/*.js', 'src/**/*.ts', 'src/**/*.json'],
   dist: 'dist',
   test: 'dist/test/test.js'
-}
+};
 
 gulp.task('default', ['test', 'watch']);
 
 gulp.task('clean', function(cb) {
-  del(paths.dist, cb);
+  return del(paths.dist, cb);
 });
 
 
