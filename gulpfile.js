@@ -61,7 +61,16 @@ gulp.task('babel', ['clean'], function () {
 	
 	return merge([
     tsResult.dts
-			.pipe(rename({dirname: ''}))
+			//.pipe(rename({dirname: ''}))
+			.pipe(rename(function(pth) {
+        if(pth.dirname === 'lib') {
+          pth.dirname = '';
+        }
+        else {
+          pth.dirname = pth.dirname.replace('lib' + path.sep, '');
+        }
+        return pth;
+      }))
 			.pipe(gulp.dest('dist/definitions')),
     tsResult.js
       .pipe(babel(babelOptions))

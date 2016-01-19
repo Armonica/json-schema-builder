@@ -25,7 +25,7 @@ import MinItems from './Keywords/MinItems';
 import MinLength from './Keywords/MinLength';
 import MinProperties from './Keywords/MinProperties';
 import MultipleOf from './Keywords/MultipleOf';
-import Not from './Not';
+import Not from './Keywords/Not';
 import OneOf from './Keywords/OneOf';
 import Pattern from './Keywords/Pattern';
 import PatternProperties from './Keywords/PatternProperties';
@@ -278,9 +278,9 @@ export default class Schema extends Builder {
     return this.getKeywordValue(ExclusiveMinimum);
   }
 
-  not(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new Not(...args));
+  not(val: Schema) {
+    if (val) {
+      this.addKeyword(new Not(val));
       return this;
     }
 

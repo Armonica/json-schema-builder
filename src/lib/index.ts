@@ -10,7 +10,7 @@ export default class Builder {
   static anyOf(val: Array<Schema>) { return Builder._schema().anyOf(val); }
   static default(...args: any[]) { return Builder._schema().default(...args); }
   static enum(val:String|Array<String>) { return Builder._schema().enum(val); }
-  static not() { return Builder._schema().not(...arguments); }
+  static not(val: Schema) { return Builder._schema().not(val); }
   static oneOf(val: Array<Schema>) { return Builder._schema().oneOf(val); }
   static type() { return Builder._schema().type(...arguments); }
   // generic helpers - type wrappers
