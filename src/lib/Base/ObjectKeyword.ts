@@ -1,10 +1,11 @@
-import Keyword from './Base/Keyword';
-import Schema from './Schema';
+/**
+ * Created by Paul on 1/19/2016.
+ */
+import Keyword from './Keyword';
+import Schema from '../Schema';
 // TODO: try finding a better way than Object type
-export default class Definitions extends Keyword {
-
-  _key = "definitions";
-
+export default class ObjectKeyword extends Keyword {
+  _key = "patternProperties";
   constructor(value: Object) {
     super();
     this.value = value;
@@ -14,7 +15,6 @@ export default class Definitions extends Keyword {
     return this._value;
   }
 
-
   set value(value: Object) {
     for (let key of Object.keys(value)) {
       let prop = value[key];
@@ -23,6 +23,10 @@ export default class Definitions extends Keyword {
       }
     }
     this._value = value;
+  }
+
+  add(name: string, value: Schema) {
+    this.value[name] = value;
   }
 
   _jsonConstraints(context) {

@@ -2,13 +2,13 @@
 declare function require(name:string);
 var _ = require('lodash');
 
-import AdditionalItems from './AdditionalItems';
-import AdditionalProperties from './AdditionalProperties';
+import AdditionalItems from './Keywords/AdditionalItems';
+import AdditionalProperties from './Keywords/AdditionalProperties';
 import AllOf from './Keywords/AllOf';
 import AnyOf from './Keywords/AnyOf';
 import Builder from './Base/Builder';
 import Default from './Default';
-import Definitions from './Definitions';
+import Definitions from './Keywords/Definitions';
 import Dependencies from './Dependencies';
 import Enum from './Enum';
 import ExclusiveMaximum from './Keywords/ExclusiveMaximum';
@@ -28,8 +28,8 @@ import MultipleOf from './Keywords/MultipleOf';
 import Not from './Not';
 import OneOf from './Keywords/OneOf';
 import Pattern from './Keywords/Pattern';
-import PatternProperties from './PatternProperties';
-import Properties from './Properties';
+import PatternProperties from './Keywords/PatternProperties';
+import Properties from './Keywords/Properties';
 import Ref from './Keywords/Ref';
 import Required from './Required';
 import Title from './Keywords/Title';
@@ -113,9 +113,9 @@ export default class Schema extends Builder {
     return this.getKeywordValue(Enum);
   }
 
-  properties(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new Properties(...args));
+  properties(val?: Object) {
+    if (val) {
+      this.addKeyword(new Properties(val));
       return this;
     }
 
@@ -138,7 +138,7 @@ export default class Schema extends Builder {
         properties.add(name, value);
       } else {
         const prop = {};
-        prop[name] = value || {};
+        prop[name] = value || new Schema();
         this.properties(prop);
       }
 
@@ -159,9 +159,9 @@ export default class Schema extends Builder {
     }
   }
 
-  patternProperties(...args: any[]) {
-    if (arguments.length) {
-      this.addKeyword(new PatternProperties(...args));
+  patternProperties(val?: Object) {
+    if (val) {
+      this.addKeyword(new PatternProperties(val));
       return this;
     }
 
@@ -195,12 +195,11 @@ export default class Schema extends Builder {
     }
   }
 
-  additionalProperties(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new AdditionalProperties(...args));
+  additionalProperties(val: Boolean|Schema) {
+    if (val || val === false) {
+      this.addKeyword(new AdditionalProperties(val));
       return this;
     }
-
     return this.getKeywordValue(AdditionalProperties);
   }
 
@@ -305,9 +304,9 @@ export default class Schema extends Builder {
     return this.getKeywordValue(MaxProperties);
   }
 
-  additionalItems(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new AdditionalItems(...args));
+  additionalItems(val: Boolean|Schema) {
+    if (val || val === false) {
+      this.addKeyword(new AdditionalItems(val));
       return this;
     }
 

@@ -28,20 +28,20 @@ export default class Builder {
   static minimum(val: Number) { return Builder._schema().minimum(val); }
   static multipleOf(val: Number) { return Builder._schema().multipleOf(val); }
   // array helpers
-  static additionalItems() { return Builder._schema().additionalItems(...arguments); }
+  static additionalItems(val: Boolean|Schema) { return Builder._schema().additionalItems(val); }
   static items() { return Builder._schema().items(...arguments); }
   static maxItems(val: Number) { return Builder._schema().maxItems(val); }
   static minItems(val: Number) { return Builder._schema().minItems(val); }
   static uniqueItems(val: Boolean) { return Builder._schema().uniqueItems(val); }
 
   // object helpers
-  static additionalProperties(...args: any[]) { return Builder._schema().additionalProperties(...args); }
+  static additionalProperties(val: Boolean|Schema) { return Builder._schema().additionalProperties(val); }
   static definitions(val: Object) { return Builder._schema().definitions(val); }
   static dependencies() { return Builder._schema().dependencies(...arguments); }
   static maxProperties(val: Number) { return Builder._schema().maxProperties(val); }
   static minProperties(val: Number) { return Builder._schema().minProperties(val); }
-  static patternProperties() { return Builder._schema().patternProperties(...arguments); }
-  static properties() { return Builder._schema().properties(...arguments); }
+  static patternProperties(val: Object) { return Builder._schema().patternProperties(val); }
+  static properties(val: Object) { return Builder._schema().properties(val); }
   //static required() { return Builder._schema().required(...arguments); }
   static required(val:String|Array<String>) { return Builder._schema().required(val); }
   static $ref(val: String) { return Builder._schema().$ref(val); }

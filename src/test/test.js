@@ -95,7 +95,7 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
               foo: json.enum('foo'),
               bar: json.enum('bar')
             });
-        //console.log(JSON.stringify(schema.json()));
+        //console.log('eip', JSON.stringify(schema.json()));
         return schema;
       });
 
@@ -389,11 +389,11 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
       test('additionalProperties', 'additionalProperties being false does not allow other properties', () => {
         const schema = json
             .properties({
-              foo: {},
-              bar: {}
+              foo: json.schema({}),
+              bar: json.schema({})
             })
             .patternProperties({
-              '^v': {}
+              '^v': json.schema({})
             })
             .additionalProperties(false);
 
@@ -403,8 +403,8 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
       test('additionalProperties', 'additionalProperties allows a schema which should validate', () => {
         const schema = json
             .properties({
-              foo: {},
-              bar: {}
+              foo: json.schema({}),
+              bar: json.schema({})
             })
             .additionalProperties(json.schema().boolean());
 
@@ -419,8 +419,8 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
       test('additionalProperties', 'additionalProperties are allowed by default', () => {
         const schema = json
             .properties({
-              foo: {},
-              bar: {}
+              foo: json.schema({}),
+              bar: json.schema({})
             });
 
         return schema;
@@ -440,8 +440,11 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
 
     test('required', 'required validation', () => {
       const schema = json
-          .property('foo', {}, true)
-          .property('bar', {});
+          .property('foo', json.schema(), true)
+          .property('bar', json.schema());
+
+      //console.log(schema.json());
+
       return schema;
     });
 
@@ -735,11 +738,12 @@ describe('Tests', () => {
 
     it('should match schema with property', () => {
       const schema = json.property('foo');
+      //console.log(schema.json());
       test(schema, 'single-property.json');
     });
 
     it('should also match schema with property', () => {
-      const schema = json.schema().properties({ foo: {} });
+      const schema = json.schema().properties({ foo: json.object() });
       test(schema, 'single-property.json');
     });
 
@@ -759,7 +763,7 @@ describe('Tests', () => {
     });
 
     it('should match schema with single required property', () => {
-      const schema = json.property('foo', {}, true);
+      const schema = json.property('foo', json.object(), true);
 
       test(schema, 'single-required-property.json');
     });
@@ -773,6 +777,8 @@ describe('Tests', () => {
 */
     it('should match schema with single required property and no others allowed', () => {
       const schema = json.property('foo').required('foo').additionalProperties(false);
+
+      //console.log(JSON.stringify(schema.json()));
       test(schema, 'single-required-property-additionalProperties-false.json');
     });
 
