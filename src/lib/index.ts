@@ -8,11 +8,11 @@ export default class Builder {
 
   static allOf(val: Array<Schema>) { return Builder._schema().allOf(val); }
   static anyOf(val: Array<Schema>) { return Builder._schema().anyOf(val); }
-  static default(...args: any[]) { return Builder._schema().default(...args); }
+  static default(val: Object) { return Builder._schema().default(val); }
   static enum(val:String|Array<String>) { return Builder._schema().enum(val); }
   static not(val: Schema) { return Builder._schema().not(val); }
   static oneOf(val: Array<Schema>) { return Builder._schema().oneOf(val); }
-  static type() { return Builder._schema().type(...arguments); }
+  static type(val: String|Array<String>) { return Builder._schema().type(val); }
   // generic helpers - type wrappers
   static array() { return Builder._schema().array(); }
   static boolean() { return Builder._schema().boolean(); }
@@ -29,7 +29,7 @@ export default class Builder {
   static multipleOf(val: Number) { return Builder._schema().multipleOf(val); }
   // array helpers
   static additionalItems(val: Boolean|Schema) { return Builder._schema().additionalItems(val); }
-  static items() { return Builder._schema().items(...arguments); }
+  static items(val: Schema|Array<Schema>) { return Builder._schema().items(val); }
   static maxItems(val: Number) { return Builder._schema().maxItems(val); }
   static minItems(val: Number) { return Builder._schema().minItems(val); }
   static uniqueItems(val: Boolean) { return Builder._schema().uniqueItems(val); }
@@ -37,7 +37,7 @@ export default class Builder {
   // object helpers
   static additionalProperties(val: Boolean|Schema) { return Builder._schema().additionalProperties(val); }
   static definitions(val: Object) { return Builder._schema().definitions(val); }
-  static dependencies() { return Builder._schema().dependencies(...arguments); }
+  static dependencies(val: Object) { return Builder._schema().dependencies(val); }
   static maxProperties(val: Number) { return Builder._schema().maxProperties(val); }
   static minProperties(val: Number) { return Builder._schema().minProperties(val); }
   static patternProperties(val: Object) { return Builder._schema().patternProperties(val); }

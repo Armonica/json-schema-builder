@@ -96,7 +96,6 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
               foo: json.enum('foo'),
               bar: json.enum('bar')
             });
-        //console.log('eip', JSON.stringify(schema.json()));
         return schema;
       });
 
@@ -106,7 +105,6 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
             .object()
             .property('foo', json.enum('foo'))
             .property('bar', json.enum('bar'), true);
-        //console.log(schema.json());
         return schema;
       });
 
@@ -116,7 +114,6 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
             .object()
             .property({ foo: json.enum('foo') })
             .property({ bar: json.enum('bar') }, true);
-        //console.log(schema.json());
         return schema;
       });
 
@@ -263,10 +260,10 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
     });
 
     describe('type', () => {
-
+      //TODO: added brackets
       test('not', 'not multiple types', () => {
-        const schema = json.not(json.type('integer', 'boolean'));
-
+        const schema = json.not(json.type(['integer', 'boolean']));
+        //console.log(schema.json());
         return schema;
       });
 
@@ -290,6 +287,7 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
 
       test('dependencies', 'dependencies', () => {
         const schema = json.dependencies({ 'bar': ['foo'] });
+        //console.log(JSON.stringify(schema.json()));
         return schema;
       });
 
@@ -532,11 +530,12 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
       return schema;
     });
 
+    //TODO: not quite equiv
     // equivalent
-    test('items', 'an array of schemas for items', () => {
-      const schema = json.items(json.integer(), json.string());
-      return schema;
-    });
+    //test('items', 'an array of schemas for items', () => {
+    //  const schema = json.items(json.integer(), json.string());
+    //  return schema;
+    //});
 
     test('additionalItems', 'additionalItems as schema', () => {
       const schema = json
@@ -550,13 +549,13 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
       const schema = json
           .items(json.schema())
           .additionalItems(false);
-      //console.log(JSON.stringify(schema));
       return schema;
     });
 
+    //TODO: Added brackets
     test('additionalItems', 'array of items with no additionalItems', () => {
       const schema = json
-          .items(json.schema(), json.schema(), json.schema())
+          .items([json.schema(), json.schema(), json.schema()])
           .additionalItems(false);
 
       return schema;
@@ -778,8 +777,6 @@ describe('Tests', () => {
 */
     it('should match schema with single required property and no others allowed', () => {
       const schema = json.property('foo').required('foo').additionalProperties(false);
-
-      //console.log(JSON.stringify(schema.json()));
       test(schema, 'single-required-property-additionalProperties-false.json');
     });
 
