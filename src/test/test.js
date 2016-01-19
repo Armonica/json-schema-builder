@@ -74,9 +74,10 @@ describe ('Tests based on standard JSON Schema Test Suite', () => {
         return schema;
       });
 
+      //TODO: added brackets for arguments
       // equivalent
       test('enum', 'simple enum validation', () => {
-        const schema = json.enum(1, 2, 3);
+        const schema = json.enum([1, 2, 3]);
         assert(schema.enum, [1, 2, 3]);
         return schema;
       });

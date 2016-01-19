@@ -10,7 +10,7 @@ import Builder from './Base/Builder';
 import Default from './Default';
 import Definitions from './Keywords/Definitions';
 import Dependencies from './Dependencies';
-import Enum from './Enum';
+import Enum from './Keywords/Enum';
 import ExclusiveMaximum from './Keywords/ExclusiveMaximum';
 import ExclusiveMinimum from './Keywords/ExclusiveMinimum';
 import Format from './Keywords/Format';
@@ -31,7 +31,7 @@ import Pattern from './Keywords/Pattern';
 import PatternProperties from './Keywords/PatternProperties';
 import Properties from './Keywords/Properties';
 import Ref from './Keywords/Ref';
-import Required from './Required';
+import Required from './Keywords/Required';
 import Title from './Keywords/Title';
 import Type from './Type';
 import UniqueItems from './Keywords/UniqueItems';
@@ -104,9 +104,10 @@ export default class Schema extends Builder {
     return this.getKeywordValue(Required);
   }
 
-  enum(...args: any[]) {
-    if (args.length) {
-      this.addKeyword(new Enum(...args));
+  enum(val?:String|Array<String>) {
+    if (val && val.length) {
+      let value = Array.isArray(val) ? val : [val];
+      this.addKeyword(new Enum(value));
       return this;
     }
 

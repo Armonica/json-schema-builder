@@ -1,3 +1,3 @@
-import Keyword from './Base/Keyword';
+import Keyword from '../Base/Keyword';
 
 export default class ArrayKeyword extends Keyword {}

@@ -1,4 +1,4 @@
-import ArrayKeyword from './ArrayKeyword';
+import ArrayKeyword from './Base/Keyword';
 import Schema from './Schema';
 
 export default class Items extends ArrayKeyword {

@@ -1,4 +1,4 @@
-import ObjectKeyword from './ObjectKeyword';
+import ObjectKeyword from './Base/Keyword';
 import Builder from './Base/Builder';
 import Schema from './Schema';
 //import { uniq } from 'lodash';
