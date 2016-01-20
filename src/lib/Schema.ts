@@ -1,4 +1,3 @@
-//import * as _ from 'lodash';
 declare function require(name:string);
 var _ = require('lodash');
 
@@ -55,17 +54,16 @@ export default class Schema extends Builder {
     return this._keywords;
   }
 
-  //addKeyword(keyword: Type) {
   addKeyword(keyword: Keyword) {
     this.keywords.push(keyword);
   }
 
   getKeyword(Class) {
-    return _.find(this.keywords, keyword => keyword instanceof Class);
+    return this.keywords.find(keyword => keyword instanceof Class);
   }
 
   getKeywordValue(Class, defaultValue = undefined) {
-    return _.result(_.find(this.keywords, keyword => keyword instanceof Class), 'value', defaultValue);
+    return _.result(this.keywords.find(keyword => keyword instanceof Class), 'value', defaultValue);
   }
 
   //type(...args: any[]) {
