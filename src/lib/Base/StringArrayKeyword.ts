@@ -1,10 +1,10 @@
 /**
  * Created by Paul on 1/19/2016.
  */
-import Keyword from './Keyword';
+import {Keyword} from './Keyword';
 
 //TODO: check uniqueness of string values in the array
-export default class StringArrayKeyword extends Keyword {
+export class StringArrayKeyword extends Keyword {
   constructor(value: Array<String>) {
     super();
     this.value = value;

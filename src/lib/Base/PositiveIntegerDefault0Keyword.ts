@@ -1,9 +1,9 @@
 /**
  * Created by Paul on 1/17/2016.
  */
-import PositiveIntegerKeyword from './PositiveIntegerKeyword';
+import {PositiveIntegerKeyword} from './PositiveIntegerKeyword';
 
-export default class PositiveIntegerDefault0Keyword extends PositiveIntegerKeyword {
+export class PositiveIntegerDefault0Keyword extends PositiveIntegerKeyword {
 
   constructor(value?: Number) {
     if(!value) {

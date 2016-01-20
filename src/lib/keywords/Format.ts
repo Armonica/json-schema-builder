@@ -1,4 +1,4 @@
-import StringKeyword from '../Base/StringKeyword';
+import {StringKeyword} from '../Base/StringKeyword';
 
 let validFormats = [
 	'date-time',
@@ -9,7 +9,7 @@ let validFormats = [
 	'uri'
 ];
 
-export default class Format extends StringKeyword {
+export class Format extends StringKeyword {
 	_key = "format";
 	constructor(value: String) {
 		super(value);

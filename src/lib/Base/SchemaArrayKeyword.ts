@@ -2,10 +2,10 @@
  * Created by Paul on 1/17/2016.
  */
 
-import Keyword from './Keyword';
-import Schema from '../Schema';
+import {Keyword} from './Keyword';
+import {Schema} from '../Schema';
 
-export default class SchemaArrayKeyword extends Keyword {
+export class SchemaArrayKeyword extends Keyword {
 
   constructor(value: Array<Schema>) {
     super();

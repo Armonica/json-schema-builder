@@ -1,10 +1,10 @@
 /**
  * Created by Paul on 1/19/2016.
  */
-import ObjectKeyword from './Keyword';
-import Schema from '../Schema';
+import {Keyword} from './Keyword';
+import {Schema} from '../Schema';
 
-export default class BooleanOrSchemaKeyword extends ObjectKeyword {
+export class BooleanOrSchemaKeyword extends Keyword {
   constructor(value: Boolean|Schema) {
     super();
     this.value = value;

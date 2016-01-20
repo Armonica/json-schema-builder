@@ -1,47 +1,47 @@
 declare function require(name:string);
 var _ = require('lodash');
 
-import Keyword from './Base/Keyword';
+import {Keyword} from './Base/Keyword';
 
-import AdditionalItems from './Keywords/AdditionalItems';
-import AdditionalProperties from './Keywords/AdditionalProperties';
-import AllOf from './Keywords/AllOf';
-import AnyOf from './Keywords/AnyOf';
-import Builder from './Base/Builder';
-import Default from './Keywords/Default';
-import Definitions from './Keywords/Definitions';
-import Dependencies from './Keywords/Dependencies';
-import Enum from './Keywords/Enum';
-import ExclusiveMaximum from './Keywords/ExclusiveMaximum';
-import ExclusiveMinimum from './Keywords/ExclusiveMinimum';
-import Format from './Keywords/Format';
-import Items from './Keywords/Items';
+import {AdditionalItems} from './Keywords/AdditionalItems';
+import {AdditionalProperties} from './Keywords/AdditionalProperties';
+import {AllOf} from './Keywords/AllOf';
+import {AnyOf} from './Keywords/AnyOf';
+import {Builder} from './Base/Builder';
+import {Default} from './Keywords/Default';
+import {Definitions} from './Keywords/Definitions';
+import {Dependencies} from './Keywords/Dependencies';
+import {Enum} from './Keywords/Enum';
+import {ExclusiveMaximum} from './Keywords/ExclusiveMaximum';
+import {ExclusiveMinimum} from './Keywords/ExclusiveMinimum';
+import {Format} from './Keywords/Format';
+import {Items} from './Keywords/Items';
 
-import Maximum from './Keywords/Maximum';
-import MaxItems from './Keywords/MaxItems';
-import MaxLength from './Keywords/MaxLength';
-import MaxProperties from './Keywords/MaxProperties';
-import Minimum from './Keywords/Minimum';
-import MinItems from './Keywords/MinItems';
-import MinLength from './Keywords/MinLength';
-import MinProperties from './Keywords/MinProperties';
-import MultipleOf from './Keywords/MultipleOf';
-import Not from './Keywords/Not';
-import OneOf from './Keywords/OneOf';
-import Pattern from './Keywords/Pattern';
-import PatternProperties from './Keywords/PatternProperties';
-import Properties from './Keywords/Properties';
-import Ref from './Keywords/Ref';
-import Required from './Keywords/Required';
-import Title from './Keywords/Title';
-import Type from './Keywords/Type';
-import UniqueItems from './Keywords/UniqueItems';
+import {Maximum} from './Keywords/Maximum';
+import {MaxItems} from './Keywords/MaxItems';
+import {MaxLength} from './Keywords/MaxLength';
+import {MaxProperties} from './Keywords/MaxProperties';
+import {Minimum} from './Keywords/Minimum';
+import {MinItems} from './Keywords/MinItems';
+import {MinLength} from './Keywords/MinLength';
+import {MinProperties} from './Keywords/MinProperties';
+import {MultipleOf} from './Keywords/MultipleOf';
+import {Not} from './Keywords/Not';
+import {OneOf} from './Keywords/OneOf';
+import {Pattern} from './Keywords/Pattern';
+import {PatternProperties} from './Keywords/PatternProperties';
+import {Properties} from './Keywords/Properties';
+import {Ref} from './Keywords/Ref';
+import {Required} from './Keywords/Required';
+import {Title} from './Keywords/Title';
+import {Type} from './Keywords/Type';
+import {UniqueItems} from './Keywords/UniqueItems';
 
 function isDefined(value) {
   return typeof value !== 'undefined';
 }
 
-export default class Schema extends Builder {
+export class Schema extends Builder {
 
   _keywords: any[] = [];
 

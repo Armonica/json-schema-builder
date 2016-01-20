@@ -1,6 +1,6 @@
-import StringKeyword from '../Base/StringKeyword';
+import {StringKeyword} from '../Base/StringKeyword';
 
-export default class RefKeyword extends StringKeyword {
+export class Ref extends StringKeyword {
   _key = '$ref';
   constructor(value: String) {
     super(value);

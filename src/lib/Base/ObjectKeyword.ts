@@ -1,10 +1,10 @@
 /**
  * Created by Paul on 1/19/2016.
  */
-import Keyword from './Keyword';
-import Schema from '../Schema';
+import {Keyword} from './Keyword';
+import {Schema} from '../Schema';
 // TODO: try finding a better way than Object type
-export default class ObjectKeyword extends Keyword {
+export class ObjectKeyword extends Keyword {
   _key = "patternProperties";
   constructor(value: Object) {
     super();

@@ -13,6 +13,10 @@ var ts = require("gulp-typescript");
 var rename = require("gulp-rename");
 var merge = require('merge2');
 
+
+//
+var concat = require('gulp-concat');
+
 var babelOptions = {
   // http://babeljs.io/docs/usage/experimental/
   //stage: 1,
@@ -56,7 +60,9 @@ gulp.task('babel', ['clean'], function () {
 	
 	var babelResult = gulp.src('src/**/*.js')
       .pipe(sourcemaps.init())
-      .pipe(babel(babelOptions))
+      .pipe(babel(
+        //babelOptions
+      ))
       .pipe(sourcemaps.write('.', { sourceRoot: paths.sourceRoot }));
 	
 	return merge([
@@ -73,7 +79,11 @@ gulp.task('babel', ['clean'], function () {
       }))
 			.pipe(gulp.dest('dist/definitions')),
     tsResult.js
-      .pipe(babel(babelOptions))
+      //.pipe(concat('lib/index.js'))
+      .pipe(babel(
+        //babelOptions
+      ))
+      //.pipe(concat('index.js'))
 			.pipe(sourcemaps.write('.', { sourceRoot: paths.sourceRoot }))
 			.pipe(gulp.dest(paths.dist)),
 		babelResult

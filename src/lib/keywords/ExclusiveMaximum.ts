@@ -1,6 +1,6 @@
-import BooleanKeyword from '../Base/BooleanKeyword';
+import {BooleanKeyword} from '../Base/BooleanKeyword';
 
-export default class ExclusiveMaximum extends BooleanKeyword {
+export class ExclusiveMaximum extends BooleanKeyword {
 
   _key = "exclusiveMaximum";
 

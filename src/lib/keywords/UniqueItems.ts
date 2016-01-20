@@ -1,6 +1,6 @@
-import BooleanKeyword from '../Base/BooleanKeyword';
+import {BooleanKeyword} from '../Base/BooleanKeyword';
 
-export default class UniqueItems extends BooleanKeyword {
+export class UniqueItems extends BooleanKeyword {
 
   _key = "uniqueItems";
 

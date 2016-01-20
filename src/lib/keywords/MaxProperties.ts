@@ -1,6 +1,6 @@
-import PositiveIntegerKeyword from '../Base/PositiveIntegerKeyword';
+import {PositiveIntegerKeyword} from '../Base/PositiveIntegerKeyword';
 
-export default class MaxItems extends PositiveIntegerKeyword {
+export class MaxProperties extends PositiveIntegerKeyword {
   _key = 'maxProperties';
   constructor(value: Number) {
     super(value);

@@ -1,6 +1,6 @@
-import NumberKeyword from '../Base/NumberKeyword';
+import {NumberKeyword} from '../Base/NumberKeyword';
 
-export default class Minimum extends NumberKeyword {
+export class Minimum extends NumberKeyword {
   _key = 'minimum';
   constructor(value: Number) {
     super(value);

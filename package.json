@@ -31,7 +31,7 @@
     "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
-    "gulp-concat": "^2.5.2",
+    "gulp-concat": "^2.6.0",
     "gulp-ext-replace": "^0.2.0",
     "gulp-filter": "^3.0.1",
     "gulp-mocha": "^2.1.0",

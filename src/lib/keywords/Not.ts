@@ -1,7 +1,7 @@
-import Keyword from '../Base/Keyword';
-import Schema from '../Schema';
+import {Keyword} from '../Base/Keyword';
+import {Schema} from '../Schema';
 
-export default class Not extends Keyword {
+export class Not extends Keyword {
   _key = "not";
   constructor(value: Schema) {
     super();

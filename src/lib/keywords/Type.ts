@@ -1,4 +1,4 @@
-import Keyword from '../Base/Keyword';
+import {Keyword} from '../Base/Keyword';
 
 const primitiveTypes = [
   'array',
@@ -10,7 +10,7 @@ const primitiveTypes = [
   'null'
 ];
 
-export default class Type extends Keyword {
+export class Type extends Keyword {
   _key = "type";
 
   constructor(value: String|Array<String>) {

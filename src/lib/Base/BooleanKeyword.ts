@@ -2,9 +2,9 @@
  * Created by Paul on 1/17/2016.
  */
 
-import Keyword from './Keyword';
+import {Keyword} from './Keyword';
 
-export default class BooleanKeyword extends Keyword {
+export class BooleanKeyword extends Keyword {
 
   constructor(value: Boolean) {
     if(!(value === true || value === false)) {

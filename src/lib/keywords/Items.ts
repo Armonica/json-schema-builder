@@ -1,7 +1,7 @@
-import Keyword from '../Base/Keyword';
-import Schema from '../Schema';
+import {Keyword} from '../Base/Keyword';
+import {Schema} from '../Schema';
 
-export default class Items extends Keyword {
+export class Items extends Keyword {
   _key = 'items';
   constructor(value: Schema|Array<Schema>) {
     super();

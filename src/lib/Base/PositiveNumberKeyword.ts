@@ -2,9 +2,9 @@
  * Created by Paul on 1/17/2016.
  */
 
-import NumberKeyword from './NumberKeyword';
+import {NumberKeyword} from './NumberKeyword';
 
-export default class PositiveNumberKeyword extends NumberKeyword {
+export class PositiveNumberKeyword extends NumberKeyword {
   constructor(value: Number) {
     super(value);
   }

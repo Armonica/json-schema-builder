@@ -1,6 +1,6 @@
-import Keyword from './Keyword';
+import {Keyword} from './Keyword';
 
-export default class StringKeyword extends Keyword {
+export class StringKeyword extends Keyword {
 
   constructor(value: String) {
     super();

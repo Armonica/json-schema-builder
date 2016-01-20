@@ -2,9 +2,9 @@
  * Created by Paul on 1/17/2016.
  */
 
-import Keyword from './Keyword';
+import {Keyword} from './Keyword';
 
-export default class NumberKeyword extends Keyword {
+export class NumberKeyword extends Keyword {
 
   constructor(value: Number) {
     super();

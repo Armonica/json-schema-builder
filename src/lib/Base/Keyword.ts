@@ -1,6 +1,6 @@
-import Builder from './Builder';
+import {Builder} from './Builder';
 
-export default class Keyword extends Builder {
+export class Keyword extends Builder {
   _key: string;
   _value: any;
 
