@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
    "target": "ES6",
-
     "sortOutput": true,
     "allowNonTsExtensions": true,
    "emitDecoratorMetadata": true,

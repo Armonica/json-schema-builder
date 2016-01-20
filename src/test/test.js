@@ -3,7 +3,7 @@ import testSuite from 'json-schema-test-suite';
 import * as _ from 'lodash';
 import { isEqual, stringify } from './helpers';
 //import * as json from '../lib';
-import json from '../lib';
+import json from '../../pack/main.bundle';
 import { mkdirSync } from 'fs';
 import { join } from 'path';
 import del from 'del';

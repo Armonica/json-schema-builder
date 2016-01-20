@@ -15,33 +15,39 @@ var merge = require('merge2');
 
 
 //
-var concat = require('gulp-concat');
+//var concat = require('gulp-concat');
 
-var babelOptions = {
-  // http://babeljs.io/docs/usage/experimental/
-  //stage: 1,
-
-  // http://babeljs.io/docs/usage/runtime/
-  //optional: ['runtime'],
-
-  // http://babeljs.io/docs/advanced/transformers/#optional
-
-  // whitelist: [],
-  //blacklist: []
-
-  //plugins: ['transform-runtime'],
-  //presets: [
-  //  'es2015',
-  //  'stage-1'
-  //]
-};
+var webpack = require('gulp-webpack');
 
 var paths = {
   sourceRoot: path.join(__dirname, 'src'),
   src: ['src/**/*.js', 'src/**/*.ts'],
   watch: ['src/**/*.js', 'src/**/*.ts', 'src/**/*.json'],
   dist: 'dist',
-  test: 'dist/test/test.js'
+  test: 'dist/test/test.js',
+  dest: {
+    pack: 'pack'
+  }
+};
+
+
+var webpackOptions = {
+  output: {
+    filename: '[name].bundle.js',
+    libraryTarget: 'umd'
+  }
+  //,
+  //externals: {
+  //  Backbone: {
+  //    root: 'Backbone',
+  //    amd: 'Backbone'
+  //  }
+  //},
+  //module: {
+  //  loaders: [
+  //    { test: /\.hbs$/, loader: "handlebars-loader" }
+  //  ]
+  //}
 };
 
 gulp.task('default', ['test', 'watch']);
@@ -60,14 +66,11 @@ gulp.task('babel', ['clean'], function () {
 	
 	var babelResult = gulp.src('src/**/*.js')
       .pipe(sourcemaps.init())
-      .pipe(babel(
-        //babelOptions
-      ))
+      .pipe(babel())
       .pipe(sourcemaps.write('.', { sourceRoot: paths.sourceRoot }));
 	
 	return merge([
     tsResult.dts
-			//.pipe(rename({dirname: ''}))
 			.pipe(rename(function(pth) {
         if(pth.dirname === 'lib') {
           pth.dirname = '';
@@ -79,11 +82,7 @@ gulp.task('babel', ['clean'], function () {
       }))
 			.pipe(gulp.dest('dist/definitions')),
     tsResult.js
-      //.pipe(concat('lib/index.js'))
-      .pipe(babel(
-        //babelOptions
-      ))
-      //.pipe(concat('index.js'))
+      .pipe(babel())
 			.pipe(sourcemaps.write('.', { sourceRoot: paths.sourceRoot }))
 			.pipe(gulp.dest(paths.dist)),
 		babelResult
@@ -96,7 +95,13 @@ gulp.task('dist', ['babel'], function() {
     .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('test', ['dist'], function() {
+gulp.task('pack', ['dist'], function () {
+  return gulp.src(paths.dist + '/lib' + '/index.js')
+    .pipe(webpack(webpackOptions))
+    .pipe(gulp.dest(paths.dest.pack));
+});
+
+gulp.task('test', ['pack'], function() {
 //gulp.task('test', function() {
   return gulp.src(paths.test, {read: false})
     .pipe(mocha({ reporter: 'dot' }));
